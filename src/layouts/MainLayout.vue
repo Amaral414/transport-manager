@@ -16,32 +16,18 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-    class="bg-primary text-white"
-    show-if-above
-    v-model="leftDrawerOpen"
-    bordered
-    >
+    <q-drawer class="bg-primary text-white" show-if-above v-model="leftDrawerOpen" bordered>
       <!-- drawer content -->
       <q-list>
         <q-item>
-          <q-btn
-          class="q-mb-md"
-          round
-          color="primary"
-          icon="arrow_back"
-          />
+          <q-btn class="q-mb-md" round color="primary" icon="arrow_back" />
 
 
         </q-item>
 
       </q-list>
 
-      <NavLink
-        v-for="link in navLinks"
-        :key="link.name"
-        v-bind="link"
-      />
+      <NavLink v-for="link in navLinks" :key="link.name" v-bind="link" />
 
     </q-drawer>
 
@@ -61,35 +47,29 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-  import NavLink from 'src/components/Nav/NavLink.vue'
+import { ref } from 'vue'
+import NavLink from 'src/components/Nav/NavLink.vue'
 
-  const navLinks = [
-   {
-      title: 'Início',
-      caption: 'Informações gerais',
-      icon: 'home',
-      to: '/'
-    },
-    {
-      title: 'Operações',
-      caption: 'Gerenciar operações',
-      icon: 'directions_bus',
-      to: '/operations'
-    },
-    {
-      title: 'Dashboard',
-      caption: 'Informações gerais',
-      icon: 'dashboard',
-      to: '/operations/dashboard'
-    }
-  ]
-
-  const leftDrawerOpen = ref(true)
-
-
-
-  function toggleLeftDrawer () {
-    leftDrawerOpen.value = !leftDrawerOpen.value
+const navLinks = [
+  {
+    title: 'Início',
+    caption: 'Informações gerais',
+    icon: 'home',
+    to: '/'
+  },
+  {
+    title: 'Dashboard',
+    caption: 'Informações gerais',
+    icon: 'dashboard',
+    to: '/operations/dashboard'
   }
+]
+
+const leftDrawerOpen = ref(true)
+
+
+
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
 </script>
