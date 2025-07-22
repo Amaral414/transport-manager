@@ -12,7 +12,7 @@ const routes = [
     // Aqui posso colocar outro layout
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/OpecPage.vue') },
+      { path: '', component: () => import('src/pages/CheckInPage.vue') },
       { path: 'dashboard', component: () => import('pages/DashboardPage.vue') }
     ]
   },
