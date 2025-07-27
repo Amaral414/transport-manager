@@ -1,88 +1,102 @@
 <template>
   <q-page class="q-pa-md bg-grey-1">
-    <q-form @submit="enviarFormulario" class="q-gutter-md">
-
+      <!-- Campo: Nova Viajem -->
       <q-card flat bordered class="q-pa-md q-mb-md">
-        <!-- Campo: Nome do Motorista -->
-        <InputTexto
-          label="Nome do Motorista"
-          v-model="form.motorista"
-        />
+        <q-expansion-item
+          expand-separator
+          icon="directions_bus"
+          label="Nova Viagem"
+          caption="Iniciar uma nova viagem"
+        >
+          <q-card flat bordered class="q-pa-md q-mb-md">
+            <q-card-section>
+              <q-item>
+                <q-item-section>
+                  <q-input
+                    outlined
+                    dense
+                    label="Motorista"
+                    v-model="dados.motorista"
+                  ></q-input>
+                </q-item-section>
+                <q-item-section>
+                  <q-input
+                    outlined
+                    dense
+                    label="Destino"
+                    v-model="dados.destino"
+                  ></q-input>
+                </q-item-section>
+                <q-item-section>
+                <q-input
+                  outlined
+                  dense
+                  label="Placa"
+                  v-model="dados.placa"
+                ></q-input>
+              </q-item-section>
+            </q-item>
+          </q-card-section>
 
-        <q-separator/>
-
-        <!-- Campo: Data -->
-        <InputDataHora
-          label="Data da Viagem"
-          type="date"
-          v-model="form.data"
-        />
-        
-        <!-- Placa -->
-        <InputTexto
-          label="Placa do Veículo"
-          v-model="form.placa"
-        />
-
-        <!-- KM -->
-        <div >
-          <div class="col">
-            <InputTexto
-              label="KM Saída"
-              v-model="form.kmSaida"
-              type="number"
+          <q-card-actions>
+            <q-btn
+              label="Iniciar Viagem"
+              color="primary"
+              @click="enviarNome"
+              class="full-width"
             />
-          </div>
-        </div>
+          </q-card-actions>
 
-      <!-- Destino -->
-        <InputTexto
-          label="Destino"
-          v-model="form.destino"
-        />
+          </q-card>
+        </q-expansion-item>
+
+        <q-separator></q-separator>
+
+        <!-- Campo: Viajens anteriores -->
+        <q-expansion-item
+          expand-separator
+          icon="view_timeline"
+          label="Histórico de Viagens"
+          caption="Visualizar e editar informações de viajens anteriores"
+        >
+          <q-card>
+            <q-card-section>
+              <q-item>
+                <q-item-section class="">
+                  <q-btn
+                    :to="'checkin/dashboard'"
+                    color="primary"
+                    label="Visualizar" />
+                </q-item-section>
+              </q-item>
+            </q-card-section>
+          </q-card>
+        </q-expansion-item>
+        <q-separator></q-separator>
       </q-card>
-
-      <!-- Botão Salvar -->
-      <q-btn
-        label="SALVAR"
-        type="submit"
-        color="primary"
-        icon="save"
-        class="full-width"
-        unelevated
-      />
-    </q-form>
   </q-page>
 </template>
 
 <script setup>
-import InputTexto from 'components/GeneralInputs/InputTexto.vue';
-import InputDataHora from 'components/DateTime/TimeInputs.vue';
 import { reactive } from 'vue';
+//import { ref } from 'vue';
+//import {useRouter} from 'vue-router';
 
-const form = reactive({
+
+const dados = reactive({
   motorista: '',
-  data: '',
-  placa: '',
-  kmSaida: '',
-  kmChegada: '',
   destino: '',
-  turnoManha: {
-    entrada: '',
-    saida: ''
-  },
-  intervalo: {
-    intervaloManha: '',
-    intervaloTarde: ''
-  },
-  turnoTarde: {
-    entrada: '',
-    saida: ''
-  }
+  placa: '',
 });
+//const router = useRouter();
 
-function enviarFormulario() {
-  console.log('Form enviado:', form);
-  // Aqui vai a lógica de envio, validação ou salvamento local
+function enviarNome() {
+  // Aqui você pode implementar a lógica para enviar o formulário
+  console.log('Formulário enviado:', dados.destino, dados.motorista, dados.placa);
+
+//  router.push({
+//    path: `/checkin/${motorista.value}`
+//  });
 }
+
 </script>

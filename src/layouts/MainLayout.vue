@@ -25,14 +25,12 @@
       <!-- drawer content -->
       <q-list>
         <q-item>
-          <q-btn
-          class="q-mb-md"
-          round
-          color="primary"
-          icon="arrow_back"
-          />
-
-
+          <q-item-section>
+            <q-item-label class="text-h6">Menu</q-item-label>
+          </q-item-section>
+          <q-item-section side>
+            <q-btn flat round icon="close" @click="leftDrawerOpen = false" />
+          </q-item-section>
         </q-item>
 
       </q-list>
@@ -41,6 +39,7 @@
         v-for="link in navLinks"
         :key="link.name"
         v-bind="link"
+        toggleLeftDrawer
       />
 
     </q-drawer>
@@ -75,19 +74,17 @@
       title: 'Check-in',
       caption: 'Gerenciar operações',
       icon: 'directions_bus',
-      to: '/operations'
+      to: '/checkin'
     },
     {
       title: 'Dashboard',
       caption: 'Informações gerais',
       icon: 'dashboard',
-      to: '/operations/dashboard'
+      to: '/checkin/dashboard'
     }
   ]
 
-  const leftDrawerOpen = ref(true)
-
-
+  const leftDrawerOpen = ref(false)
 
   function toggleLeftDrawer () {
     leftDrawerOpen.value = !leftDrawerOpen.value

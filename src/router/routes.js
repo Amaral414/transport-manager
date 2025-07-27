@@ -8,11 +8,14 @@ const routes = [
   },
 
   {
-    path: '/operations',
+    path: '/checkin',
     // Aqui posso colocar outro layout
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('src/pages/CheckInPage.vue') },
+      { path: '/checkin/:motorista',
+        component: () => import('src/pages/CheckInPage.vue'),
+        name: 'checkin'  // Nome da rota para facilitar a navegação
+      },
       { path: 'dashboard', component: () => import('pages/DashboardPage.vue') }
     ]
   },
