@@ -1,102 +1,95 @@
 <template>
   <q-page class="q-pa-md bg-grey-1">
     <h3>Check-In</h3>
-    <q-form
-      @submit="enviarFormulario"
-      class="q-gutter-md"
+
+    <q-card
+      flat
+      bordered
+      class="q-pa-md q-mb-md"
     >
+      <q-expansion-item
+        expand-separator
+        icon="wb_sunny"
+        label="Turno da Manhã"
+        caption="Dados de inicio do dia"
+      >
+        <q-card>
+          <!-- Componente BlocoHorario -->
+          <q-form
+            @submit="enviarFormulario"
+            class="q-gutter-md"
+          >
+            <q-card-section>
+              <InputTexto label="KM Saída" v-model="form.kmSaida" type="number" />
+            </q-card-section>
 
-      <q-form>
-        <!-- Turno da Manhã -->
-        <q-card
-          flat
-          bordered
-          class="q-pa-md q-mb-md"
-        >
-          <div class="text-subtitle2 text-primary">
-            <q-icon name="wb_sunny" class="q-mr-sm" />
-            Turno da Manhã
-          </div>
-          <BlocoHorario v-model:horario="form.turnoManha"
-          />
+            <q-card-section>
+              <BlocoHorario v-model:horario="form.turnoManha"/>
+            </q-card-section>
 
-          <q-btn label="SALVAR" type="submit" color="primary" icon="save" class="full-width" unelevated />
+            <q-card-section>
+              <q-item>
+                <q-item-section class="">
+                  <q-btn
+                    color="primary"
+                    label="Salvar"
+                    type="submit"
+                  />
+                </q-item-section>
+              </q-item>
+            </q-card-section>
+          </q-form>
         </q-card>
-      </q-form>
+      </q-expansion-item>
+    </q-card>
 
-      <!-- Intervalo -->
-      <q-form>
-        <q-card flat bordered class="q-pa-md q-mb-md">
-          <div class="text-subtitle2 text-indigo-7">
-            <q-icon name="coffee" class="q-mr-sm" />
-            Intervalos
-          </div>
-          <BlocoHorario v-model:horario="form.intervalo" :mostrarIntervalo="true" />
-          <q-btn label="SALVAR" type="submit" color="primary" icon="save" class="full-width" unelevated />
-        </q-card>
-      </q-form>
 
-      <q-form>
-        <!-- Turno da Tarde -->
-        <q-card flat bordered class="q-pa-md q-mb-md">
-          <div class="text-subtitle2 text-orange-8">
-            <q-icon name="nights_stay" class="q-mr-sm" />
-            Turno da Tarde
-          </div>
-          <BlocoHorario v-model:horario="form.turnoTarde" />
-          <q-btn label="SALVAR" type="submit" color="primary" icon="save" class="full-width" unelevated />
+    <q-card
+      flat
+      bordered
+      class="q-pa-md q-mb-md"
+    >
+      <q-expansion-item
+        expand-separator
+        icon="nights_stay"
+        label="Turno da Tarde"
+        caption="Entrada e saída do turno da tarde"
+      >
+        <q-card>
+          <!-- Componente BlocoHorario -->
+          <q-form
+            @submit="enviarFormulario"
+            class="q-gutter-md"
+          >
+            <q-card-section>
+              <BlocoHorario v-model:horario="form.turnoManha"/>
+            </q-card-section>
+            <q-card-section>
+              <q-item>
+                <q-item-section class="">
+                  <q-btn
+                    color="primary"
+                    label="Salvar"
+                    type="submit"
+                  />
+                </q-item-section>
+              </q-item>
+            </q-card-section>
+          </q-form>
         </q-card>
-      </q-form>
+      </q-expansion-item>
+    </q-card>
+
 
       <q-form>
         <!-- KM -->
         <div>
           <div class="col">
-            <InputTexto label="KM Chegada" v-model="form.kmChegada" type="number" />
           </div>
         </div>
       </q-form>
-    </q-form>
   </q-page>
     <q-page class="q-pa-md bg-grey-1">
-    <q-form @submit="enviarFormulario" class="q-gutter-md">
-
-      <q-card flat bordered class="q-pa-md q-mb-md">
-
-        <!-- Campo: Data -->
-        <InputDataHora
-          label="Data da Viagem"
-          type="date"
-          v-model="form.data"
-        />
-        <!-- Placa -->
-
-        <!-- KM -->
-        <div >
-          <div class="col">
-            <InputTexto
-              label="KM Saída"
-              v-model="form.kmSaida"
-              type="number"
-            />
-          </div>
-        </div>
-      <!-- Destino -->
-        <InputTexto
-          label="Destino"
-          v-model="form.destino"
-        />
-      <!-- Botão Salvar -->
-      <q-btn
-        label="SALVAR"
-        type="submit"
-        color="primary"
-        icon="save"
-        class="full-width"
-        unelevated
-      />
-      </q-card>
-    </q-form>
   </q-page>
 </template>
 

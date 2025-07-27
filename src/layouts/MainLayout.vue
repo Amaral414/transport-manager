@@ -39,7 +39,6 @@
         v-for="link in navLinks"
         :key="link.name"
         v-bind="link"
-        toggleLeftDrawer
       />
 
     </q-drawer>

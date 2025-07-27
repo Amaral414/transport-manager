@@ -12,7 +12,7 @@ const routes = [
     // Aqui posso colocar outro layout
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '/checkin/:motorista',
+      { path: '',
         component: () => import('src/pages/CheckInPage.vue'),
         name: 'checkin'  // Nome da rota para facilitar a navegação
       },
