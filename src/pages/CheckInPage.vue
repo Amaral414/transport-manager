@@ -10,8 +10,8 @@
       <q-expansion-item
         expand-separator
         icon="wb_sunny"
-        label="Turno da Manhã"
-        caption="Dados de inicio do dia"
+        label="Inicio do dia"
+        caption="Dados de começo da viajem"
       >
         <q-card>
           <!-- Componente BlocoHorario -->
@@ -19,12 +19,17 @@
             @submit="enviarFormulario"
             class="q-gutter-md"
           >
-            <q-card-section>
+            <q-card-section class="q-gutter-md">
+              <q-input
+                type="date"
+                outlined
+                dense
+                label="Data da viagem"
+              ></q-input>
               <InputTexto label="KM Saída" v-model="form.kmSaida" type="number" />
-            </q-card-section>
+              <TimeInputs v-model="form.entrada" label="Hora Entrada" type="time" />
+              <TimeInputs v-model="form.saida" label="Saída para o intervalo" type="time" />
 
-            <q-card-section>
-              <BlocoHorario v-model:horario="form.turnoManha"/>
             </q-card-section>
 
             <q-card-section>
@@ -43,7 +48,6 @@
       </q-expansion-item>
     </q-card>
 
-
     <q-card
       flat
       bordered
@@ -61,9 +65,12 @@
             @submit="enviarFormulario"
             class="q-gutter-md"
           >
-            <q-card-section>
-              <BlocoHorario v-model:horario="form.turnoManha"/>
+            <q-card-section class="q-gutter-md">
+              <TimeInputs v-model="form.entrada" label="Volta do intervalo" type="time" />
+              <TimeInputs v-model="form.saida" label="Término de viajem" type="time" />
+              <InputTexto label="KM de chegada" v-model="form.kmSaida" type="number" />
             </q-card-section>
+
             <q-card-section>
               <q-item>
                 <q-item-section class="">
@@ -94,24 +101,19 @@
 </template>
 
 <script setup>
+import TimeInputs from 'components/DateTime/TimeInputs.vue';
 import InputTexto from 'components/GeneralInputs/InputTexto.vue';
-import BlocoHorario from 'components/DateTime/BlocoHorario.vue';
 import { reactive } from 'vue';
 
 const form = reactive({
-  motorista: '',
   data: '',
-  placa: '',
+  entrada: '',
+  saida: '',
   kmSaida: '',
   kmChegada: '',
-  destino: '',
-  turnoManha: {
-    entrada: '',
-    saida: ''
-  },
   intervalo: {
-    intervaloManha: '',
-    intervaloTarde: ''
+    entradaIntervalo: '',
+    saidaIntervalo: ''
   },
   turnoTarde: {
     entrada: '',

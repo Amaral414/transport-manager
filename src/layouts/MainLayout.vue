@@ -4,6 +4,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+
         <div class="absolute-center">
           <q-toolbar-title>
             <q-avatar>
@@ -12,7 +13,6 @@
             Gerenciador
           </q-toolbar-title>
         </div>
-
       </q-toolbar>
     </q-header>
 
@@ -28,11 +28,11 @@
           <q-item-section>
             <q-item-label class="text-h6">Menu</q-item-label>
           </q-item-section>
+
           <q-item-section side>
             <q-btn flat round icon="close" @click="leftDrawerOpen = false" />
           </q-item-section>
         </q-item>
-
       </q-list>
 
       <NavLink
@@ -40,7 +40,6 @@
         :key="link.name"
         v-bind="link"
       />
-
     </q-drawer>
 
     <q-page-container>
@@ -50,11 +49,11 @@
     <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <div>Title</div>
+          2025 -
+          <span class="text-h6">Transport Manager</span>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
-
   </q-layout>
 </template>
 
